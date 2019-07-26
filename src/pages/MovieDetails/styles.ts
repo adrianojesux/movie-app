@@ -37,7 +37,7 @@ export const Poster = styled.img`
 `;
 
 export const MovieBody = styled.div`
-    height: 100%:
+    height: 100%;
     flex: 1;
     padding: 2em;
 `;
@@ -59,6 +59,12 @@ export const Text = styled.div`
     color: #666;
 `;
 
+export const TitleInformation = styled.span`
+    font-family: 'Abel', sans-serif;
+    font-size: 22px;
+    color: #116193;
+`;
+
 export const RoundProgress = styled.div`
     width: 100px;
     height: 100px;
@@ -68,14 +74,25 @@ export const RoundProgress = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    // margin: 2em 1em 0 0;
+    float: right;
     font-family: 'Abel', sans-serif;
-    font-size: 32px;
     color: #00E8E4;
 `;
 
-export const RowChips = styled.div`
+export const Row = styled.div`
     flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-start; left;
+    margin: 2em 0;
+`;
+
+export const RowInformation = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-start; left;
     margin: 2em 0;
 `;
 
@@ -88,4 +105,12 @@ export const Chips = styled.span`
     border: solid 2px #116193;
     border-radius: 20px;
     font-family: 'Lato', sans-serif;
+`;
+
+export const DetailBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+    min-width: 1em;
+
 `;

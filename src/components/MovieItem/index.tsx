@@ -28,7 +28,7 @@ export default class MovieItem extends Component<Props, State> {
     render() {
         return (
             <Content>
-                <Thumb src={this.prepareUrlImage(this.props.movie.poster_path)} width='250' />
+                <Thumb src={this.props.movie.poster_path && this.prepareUrlImage(this.props.movie.poster_path)} />
                 <BodyMovie>
                     <Title>
                         <RoundProgress>{this.prepareRate(this.props.movie.vote_average + '')}</RoundProgress>

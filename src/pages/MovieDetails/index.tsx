@@ -5,7 +5,7 @@ import Api from './../../services/Api';
 
 
 import { Container } from '../../styles/components/layout';
-import { Header, Title, Date, Content, Poster, MovieBody, TitleSession, Text, RowChips, Chips, RoundProgress } from './styles';
+import { Header, Title, Date, Content, Poster, MovieBody, TitleSession, Text, Row, Chips, RoundProgress, TitleInformation, DetailBox, RowInformation } from './styles';
 
 interface State {
     movie: any
@@ -63,16 +63,40 @@ export default class MovieDetails extends Component<Props, State> {
                         <TitleSession>Sinopse</TitleSession>
                         <Text>{this.state.movie.overview}</Text>
                         <TitleSession>Informações</TitleSession>
-                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita minima omnis accusamus eum officia reprehenderit. Impedit atque porro rerum. Possimus laudantium laborum expedita debitis obcaecati perspiciatis illo! Libero, beatae exercitationem.</Text>
-                        <RowChips>
+                        <RowInformation>
+                            <DetailBox>
+                                <TitleInformation>Situação</TitleInformation>
+                                <Text>{this.state.movie.status}</Text>
+                            </DetailBox>
+                            <DetailBox>
+                                <TitleInformation>Idioma</TitleInformation>
+                                <Text>{this.state.movie.original_language}</Text>
+                            </DetailBox>
+                            <DetailBox>
+                                <TitleInformation>Duração</TitleInformation>
+                                <Text>{this.state.movie.runtime}</Text>
+                            </DetailBox>
+                            <DetailBox>
+                                <TitleInformation>Orçamento</TitleInformation>
+                                <Text>{this.state.movie.budget}</Text>
+                            </DetailBox>
+                            <DetailBox>
+                                <TitleInformation>Receita</TitleInformation>
+                                <Text>{this.state.movie.revenue}</Text>
+                            </DetailBox>
+                            <DetailBox>
+                                <TitleInformation>Lucro</TitleInformation>
+                                <Text>{this.state.movie.revenue - this.state.movie.budget}</Text>
+                            </DetailBox>
+                        </RowInformation>
+                        <Row>
                             {this.state.movie.genres && this.state.movie.genres.map((genre: any) => (<Chips key={genre.id}>{genre.name}</Chips>))}
-                        </RowChips>
-                        <RoundProgress>{this.state.movie.vote_average && this.state.movie.vote_average + ''.replace('.', '')+'%'}</RoundProgress>
-                        
-                    </MovieBody>
-                    <Poster src={`https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`} />
-                </Content>
+                        </Row>
+                        <RoundProgress>{this.state.movie.vote_average && this.state.movie.vote_average + ''.replace('.', '') + '%'}</RoundProgress>
 
+                    </MovieBody>
+                    <Poster src={this.state.movie.poster_path && `https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`} />
+                </Content>
             </Container>
         );
     }

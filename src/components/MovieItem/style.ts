@@ -3,7 +3,7 @@ import styled  from 'styled-components';
 export const Content = styled.div`
     flex: 1;
     background-color: #EBEBEB;
-    height: 23em;
+    min-height: 23em;
     margin: 1em;
     display: flex;
     flex-direction: row;
@@ -11,6 +11,7 @@ export const Content = styled.div`
     cursor: pointer;
     transition: .3s ease-in-out;
     text-decoration: none;
+    flex-wrap: wrap;
 
     :hover {
         transform: scale(1.01);
@@ -18,7 +19,8 @@ export const Content = styled.div`
 `;
 
 export const Thumb = styled.img`
-    // flex: 1;
+    max-width: 305px;
+    flex: 1;
 `;
 
 export const Title  = styled.div`
@@ -37,8 +39,10 @@ export const Title  = styled.div`
 `;
 
 export const BodyMovie = styled.div`
-    width: 100%;
+    flex: 1;
     height: 100%;
+    width:100%;
+    padding-bottom: 1em;
 `;
 
 export const Details = styled.div`
@@ -60,7 +64,6 @@ export const RoundProgress = styled.div`
     align-items: center;
     margin: 2em 1em 0 0;
     font-family: 'Abel', sans-serif;
-    font-size: 28px;
 `;
 
 export const RowChips = styled.div`
