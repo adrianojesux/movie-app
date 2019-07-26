@@ -38,7 +38,7 @@ export default class SearchMovie extends Component<Props, State> {
         };
         const result = await Api.get('/genre/movie/list', request);
         this.setState({ genres: result.data.genres });
-        console.log(this.state)
+        document.title = 'Movie App';
     }
 
     getGenres = (genresIds: []) => {
@@ -79,7 +79,7 @@ export default class SearchMovie extends Component<Props, State> {
                     <Search placeholder="Busque um filme por nome, ano ou genero..." onChange={this.handleChangeInput} />
                     {
                         this.state.movies.map((movie: any) => (
-                            <Link to='/detail' >
+                            <Link to={`/detail/${movie.id}`} key={movie.id} >
                                 <MovieItem movie={movie} genres={this.getGenres(movie.genre_ids)} />
                             </Link>
                         ))
