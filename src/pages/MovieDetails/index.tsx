@@ -111,7 +111,7 @@ export default class MovieDetails extends Component<Props, State> {
                     </MovieBody>
                     <Poster src={this.state.movie.poster_path && `https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`} />
                 </Content>
-                <Video src={this.prepareVide(this.state.movie.videos ? this.state.movie.videos.results[0].key : '')}></Video>
+                {this.state.movie.videos && this.state.movie.videos.results.length > 0 ? <Video src={this.prepareVide(this.state.movie.videos.results[0])}></Video> : ''}
             </Container>
         );
     }
