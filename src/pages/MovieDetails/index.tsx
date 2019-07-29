@@ -5,7 +5,7 @@ import Api from './../../services/Api';
 
 
 import { Container } from '../../styles/components/layout';
-import { Header, Title, Date, Content, Poster, MovieBody, TitleSession, Text, Row, Chips, RoundProgress, TitleInformation, DetailBox, RowInformation } from './styles';
+import { Header, Title, Video, Date, Content, Poster, MovieBody, TitleSession, Text, Row, Chips, RoundProgress, TitleInformation, DetailBox, RowInformation } from './styles';
 
 interface State {
     movie: any
@@ -51,6 +51,20 @@ export default class MovieDetails extends Component<Props, State> {
         return `${dia}/${mes}/${ano}`;
     }
 
+    handlePrepareRoundeProgress = (value: number): string => {
+        return String(value).replace('.', '').concat('%');
+    }
+
+    convertMinutesToHours = (minutes: number) => {
+        const h = (minutes / 60);
+        const min = (minutes % 60);
+        return (min > 0) ? `${Math.floor(h)}h e ${min}min` : `${h}hs`;
+    }
+
+    prepareVide = (id: string): string => {
+        return `https://www.youtube.com/embed/${id}`;
+    }
+
     render() {
         return (
             <Container>
@@ -74,29 +88,30 @@ export default class MovieDetails extends Component<Props, State> {
                             </DetailBox>
                             <DetailBox>
                                 <TitleInformation>Duração</TitleInformation>
-                                <Text>{this.state.movie.runtime}</Text>
+                                <Text>{this.convertMinutesToHours(this.state.movie.runtime)}</Text>
                             </DetailBox>
                             <DetailBox>
                                 <TitleInformation>Orçamento</TitleInformation>
-                                <Text>{this.state.movie.budget}</Text>
+                                <Text>${this.state.movie.budget},00</Text>
                             </DetailBox>
                             <DetailBox>
                                 <TitleInformation>Receita</TitleInformation>
-                                <Text>{this.state.movie.revenue}</Text>
+                                <Text>${this.state.movie.revenue},00</Text>
                             </DetailBox>
                             <DetailBox>
                                 <TitleInformation>Lucro</TitleInformation>
-                                <Text>{this.state.movie.revenue - this.state.movie.budget}</Text>
+                                <Text>${this.state.movie.revenue - this.state.movie.budget},00</Text>
                             </DetailBox>
                         </RowInformation>
                         <Row>
                             {this.state.movie.genres && this.state.movie.genres.map((genre: any) => (<Chips key={genre.id}>{genre.name}</Chips>))}
                         </Row>
-                        <RoundProgress>{this.state.movie.vote_average && this.state.movie.vote_average + ''.replace('.', '') + '%'}</RoundProgress>
+                        <RoundProgress>{this.state.movie.vote_average && this.handlePrepareRoundeProgress(this.state.movie.vote_average)}</RoundProgress>
 
                     </MovieBody>
                     <Poster src={this.state.movie.poster_path && `https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`} />
                 </Content>
+                <Video src={this.prepareVide(this.state.movie.videos ? this.state.movie.videos.results[0].key : '')}></Video>
             </Container>
         );
     }

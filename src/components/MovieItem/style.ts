@@ -50,6 +50,7 @@ export const Details = styled.div`
     margin: 2em 0 .5em .5em;
     padding: 1em 2em;
     font-family: 'Lato', sans-serif;
+    font-size: 14px;
 
 `;
 
@@ -73,11 +74,12 @@ export const RowChips = styled.div`
 
 
 export const Chips = styled.span`
-    padding: 4px 8px;
+    padding: 3px 8px;
     margin: 4px;
     color: #116193;
     background-color: #fff;
-    border: solid 2px #116193;
+    border: solid 1px #116193;
     border-radius: 20px;
     font-family: 'Lato', sans-serif;
+    font-size: 14px;
 `;

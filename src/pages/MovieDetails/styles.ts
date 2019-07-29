@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Header = styled.div`
     width: 100%;
-    height: 4em;
+    min-height: 4em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,18 +26,34 @@ export const Date = styled.h1`
 
 export const Content = styled.div`
     width: 100%;
+    min-heigth: 100%;
     display: flex;
-    flex-directio: row;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
     background-color: #F2F2F2;
+    overflow: hidden;
 `;
 
+export const Video = styled.iframe`
+    width: 100%;
+    min-height: 600px;
+    margin-top: 1em;
+    border: none;
+`;
+
+
 export const Poster = styled.img`
-    width: 400px;
+    max-width: 400px;
     flex: 1;
+
+    @media (max-width: 768px) {
+        max-width: 340px;
+    }
 `;
 
 export const MovieBody = styled.div`
     height: 100%;
+    width: 100%;
     flex: 1;
     padding: 2em;
 `;
@@ -54,7 +70,7 @@ export const TitleSession = styled.div`
 
 export const Text = styled.div`
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
     color: #666;
 `;
@@ -77,6 +93,7 @@ export const RoundProgress = styled.div`
     float: right;
     font-family: 'Abel', sans-serif;
     color: #00E8E4;
+    font-size: 36px;
 `;
 
 export const Row = styled.div`
@@ -94,17 +111,23 @@ export const RowInformation = styled.div`
     justify-content: space-between;
     flex-start; left;
     margin: 2em 0;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 
 export const Chips = styled.span`
-    padding: 4px 8px;
+    padding: 3px 8px;
     margin: 4px;
     color: #116193;
     background-color: #fff;
-    border: solid 2px #116193;
+    border: solid 1px #116193;
     border-radius: 20px;
     font-family: 'Lato', sans-serif;
+    font-size: 14px;
 `;
 
 export const DetailBox = styled.div`
